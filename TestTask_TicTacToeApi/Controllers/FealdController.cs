@@ -81,7 +81,7 @@
         /// <response code="400">Если поле получить не удалось</response>  
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpGet("/continue")]
+        [HttpGet("api/continue")]
         public ActionResult ContinueGame() 
         {
             var feald = JsonDocument.Parse(_repository.GetSavedFeald());
