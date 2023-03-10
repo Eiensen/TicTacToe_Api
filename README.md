@@ -125,5 +125,4 @@ POST: /api/Feald?cellKey=A1&cellValue=x
 </table>
 
 <h3>Ссылки:</h3>
-Образ на Docker Hub
-<p><a>https://hub.docker.com/repository/docker/eiensen/testtask_tictactoe/general<a/></p>
+<p>Образ на <a href="https://hub.docker.com/repository/docker/eiensen/testtask_tictactoe/general">Docker Hub<a/></p>
