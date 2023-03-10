@@ -123,3 +123,7 @@ POST: /api/Feald?cellKey=A1&cellValue=x
 <td>Победил игрок, игравший за Нолики</td>
 </tr>
 </table>
+
+<h3>Ссылки:</h3>
+Образ на Docker Hub
+https://hub.docker.com/repository/docker/eiensen/testtask_tictactoe/general
