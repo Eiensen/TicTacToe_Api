@@ -2,19 +2,19 @@
 {
     public class FileRepository : IRepository
     {
-        private readonly IFealdLogicService _fealdLogic;
+        private readonly IFieldLogicService _fieldLogic;
 
         private string _pathDir = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
 
         private string _filePath;
 
-        private Feald _feald = new Feald();
+        private Field _field = new Field();
 
         public GameResult GameResult { get; set; } = GameResult.Draw;
         
-        public FileRepository(IFealdLogicService fealdLogic)
+        public FileRepository(IFieldLogicService fieldLogic)
         {
-            _fealdLogic = fealdLogic;
+            _fieldLogic = fieldLogic;
 
             _filePath = $"{_pathDir}/TestTask_TicTacToeApi/Data/Files/save.txt";
         }
@@ -26,47 +26,47 @@
                 CleareFealdForNewGame();
             }
 
-            SaveFealdStateInFile();
+            SaveFieldStateInFile();
 
-            return JsonConvert.SerializeObject(_feald);
+            return JsonConvert.SerializeObject(_field);
         }
 
-        public string UpdateFealdAfterTurn(string cellKey, string cellValue)
+        public string UpdateFieldAfterTurn(string cellKey, string cellValue)
         {
-            for (int i = 0; i < _feald.FealdArray.GetLength(0); i++)
+            for (int i = 0; i < _field.FieldArray.GetLength(0); i++)
             {
-                for (int j = 0; j < _feald.FealdArray.GetLength(1); j++)
+                for (int j = 0; j < _field.FieldArray.GetLength(1); j++)
                 {
-                    if (_feald.FealdArray[i, j].Key == cellKey)
+                    if (_field.FieldArray[i, j].Key == cellKey)
                     {
-                        _feald.FealdArray[i, j].Value = cellValue;
-                        _feald.FealdArray[i, j].IsAble = false;
+                        _field.FieldArray[i, j].Value = cellValue;
+                        _field.FieldArray[i, j].IsAble = false;
                     }
                 }
             }
 
-            GameResult = _fealdLogic.GetGameResult(_feald.FealdArray);
+            GameResult = _fieldLogic.GetGameResult(_field.FieldArray);
 
-            SaveFealdStateInFile();
+            SaveFieldStateInFile();
 
-            return JsonConvert.SerializeObject(_feald);
+            return JsonConvert.SerializeObject(_field);
         }
 
-        public string GetSavedFeald()
+        public string GetSavedField()
         {
-            ReadFealdFromFile();
+            ReadFieldFromFile();
 
-            return JsonConvert.SerializeObject(_feald);
+            return JsonConvert.SerializeObject(_field);
         }
 
         private void CleareFealdForNewGame()
         {
-            _feald = new Feald();           
+            _field = new Field();           
         }
 
-        private async void SaveFealdStateInFile()
+        private async void SaveFieldStateInFile()
         {           
-            if (_feald != null)
+            if (_field != null)
             {
                 if(!File.Exists(_filePath))
                 {
@@ -75,7 +75,7 @@
 
                 using (FileStream fstream = new FileStream(_filePath, FileMode.Create))
                 {
-                    var strToSave = JsonConvert.SerializeObject(_feald);
+                    var strToSave = JsonConvert.SerializeObject(_field);
                     
                     byte[] buffer = Encoding.Default.GetBytes(strToSave);
                     
@@ -84,7 +84,7 @@
             }
         }
 
-        private async void ReadFealdFromFile()
+        private async void ReadFieldFromFile()
         {
             string textFromFile;
 
@@ -99,7 +99,7 @@
 
             if(textFromFile != null)
             {
-                _feald = JsonConvert.DeserializeObject<Feald>(textFromFile);
+                _field = JsonConvert.DeserializeObject<Field>(textFromFile);
             }            
         }
     }

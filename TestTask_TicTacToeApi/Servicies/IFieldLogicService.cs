@@ -1,6 +1,6 @@
 ﻿namespace TestTask_TicTacToeApi.Servicies
 {
-    public interface IFealdLogicService
+    public interface IFieldLogicService
     {
         GameResult GetGameResult(Cell[,] cells);
     }

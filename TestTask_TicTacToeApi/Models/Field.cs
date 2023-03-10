@@ -1,12 +1,12 @@
 ﻿namespace TestTask_TicTacToeApi.Models
 {
-    public class Feald
+    public class Field
     {
-        public Cell[,] FealdArray { get; set; }
+        public Cell[,] FieldArray { get; set; }
 
-        public Feald()
+        public Field()
         {
-            FealdArray = new Cell[,]
+            FieldArray = new Cell[,]
         {
             {
                 new Cell(){Key = "A1", Value = "", IsAble= true},

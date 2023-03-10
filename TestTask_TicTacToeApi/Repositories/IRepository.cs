@@ -9,8 +9,8 @@ namespace TestTask_TicTacToeApi.Repositories
 
         string GetCurrentFeald();
 
-        string UpdateFealdAfterTurn(string cellKey, string cellValue);
+        string UpdateFieldAfterTurn(string cellKey, string cellValue);
 
-        string GetSavedFeald();
+        string GetSavedField();
     }
 }

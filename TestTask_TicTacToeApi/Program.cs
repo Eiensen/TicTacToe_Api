@@ -34,7 +34,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddSingleton<IRepository, FileRepository>();
 
-builder.Services.AddTransient<IFealdLogicService, FealdLogicService>();
+builder.Services.AddTransient<IFieldLogicService, FieldLogicService>();
 
 var app = builder.Build();
 

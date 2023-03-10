@@ -6,11 +6,11 @@
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class FealdController : ControllerBase
+    public class FieldController : ControllerBase
     {
         private readonly IRepository _repository;
 
-        public FealdController(IRepository repository)
+        public FieldController(IRepository repository)
         {
             _repository = repository;
         }
@@ -24,13 +24,13 @@
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet]
-        public ActionResult GetFeald()
+        public ActionResult GetField()
         {
-            var feald = JsonDocument.Parse(_repository.GetCurrentFeald());
+            var field = JsonDocument.Parse(_repository.GetCurrentFeald());
 
-            if(feald != null)
+            if(field != null)
             {
-                return Ok(feald);
+                return Ok(field);
             }
 
             return BadRequest();
@@ -42,7 +42,7 @@
         /// <remarks>
         /// Пример запроса:
         ///
-        ///     POST /Feald
+        ///     POST /Field
         ///     {        
         ///        "key": "A1",
         ///        "value": "x"
@@ -57,14 +57,15 @@
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public ActionResult UpdateFealdAfterTurn(string cellKey, string cellValue)
+        public ActionResult UpdateFieldAfterTurn(string cellKey, string cellValue)
         {
             var updatedCells = new CurrentCells();
 
-            var feald = JsonDocument.Parse(_repository.UpdateFealdAfterTurn(cellKey, cellValue));
-            if(feald != null)
+            var field = JsonDocument.Parse(_repository.UpdateFieldAfterTurn(cellKey, cellValue));
+
+            if(field != null)
             {
-                updatedCells.CurrentFealdJson = feald;
+                updatedCells.CurrentFealdJson = field;
                 updatedCells.GameStatus = _repository.GameResult.ToString();
 
                 return Ok(updatedCells);
@@ -84,11 +85,11 @@
         [HttpGet("api/continue")]
         public ActionResult ContinueGame() 
         {
-            var feald = JsonDocument.Parse(_repository.GetSavedFeald());
+            var field = JsonDocument.Parse(_repository.GetSavedField());
 
-            if(feald != null)
+            if(field != null)
             {
-                return Ok(feald);
+                return Ok(field);
             }
             
             return BadRequest();
