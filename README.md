@@ -115,11 +115,11 @@ POST: /api/Feald?cellKey=A1&cellValue=x
 <td>Ничья - можно продолжать игру</td>
 </tr>
 <tr>
-<td>crossWin</td>
+<td>СrossWin</td>
 <td>Победил игрок, игравший за Крестики</td>
 </tr>
 <tr>
-<td>circleWin</td>
+<td>СircleWin</td>
 <td>Победил игрок, игравший за Нолики</td>
 </tr>
 </table>
