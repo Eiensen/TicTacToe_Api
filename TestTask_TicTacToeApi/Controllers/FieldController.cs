@@ -19,9 +19,9 @@
         /// Запрос на получение текущего поля игры
         /// </summary>
         /// <returns>Возвращает объект с текущим сотоянием</returns>
-        /// <response code="201">Возвращает текущее поле</response>
+        /// <response code="200">Возвращает текущее поле</response>
         /// <response code="400">Если поле получить не удалось</response>  
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet]
         public ActionResult GetField()
@@ -52,9 +52,9 @@
         /// <param name="cellKey">Ключ ячейки</param>
         /// <param name="cellValue">Значение ячейки</param>
         /// <returns>Возвращает поле с обновленными ячейками</returns>
-        /// <response code="201">Возвращает обновленное поле</response>
+        /// <response code="200">Возвращает обновленное поле</response>
         /// <response code="400">Если поле получить не удалось</response>  
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
         public ActionResult UpdateFieldAfterTurn(string cellKey, string cellValue)
@@ -78,9 +78,9 @@
         /// Запрос на получение очищенного поля с чистыми ячейками
         /// </summary>
         /// <returns>Возвращает новое поле с очищенными ячейками</returns>
-        /// <response code="201">Возвращает новое поле</response>
+        /// <response code="200">Возвращает новое поле</response>
         /// <response code="400">Если поле получить не удалось</response>  
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("api/continue")]
         public ActionResult ContinueGame() 
